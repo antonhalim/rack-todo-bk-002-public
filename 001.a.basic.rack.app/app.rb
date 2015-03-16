@@ -47,7 +47,7 @@ end
 # and one incidentally complex one.
 
 # The reasonable thing is that our call method does nothing.
-# It needs to return a well-formed HTTP response to be 
+# It needs to return a well-formed HTTP response to be
 # compatible with the internets.
 
 # A HTTP Response is defined as three components.
@@ -62,9 +62,9 @@ end
   # status to each other?
 
   # Response Headers - Some metadata that describes the response.
-  # The web is multimedia. We deliver text, and hypertext, and 
-  # images, and sound, and video, and binary and lolcatz. Data comes 
-  # in many forms and we handle it all. To make things easy, we 
+  # The web is multimedia. We deliver text, and hypertext, and
+  # images, and sound, and video, and binary and lolcatz. Data comes
+  # in many forms and we handle it all. To make things easy, we
   # describe the data we deliver. Generally, you have to at least
   # specify the type of content your sending back. Sometimes, you have
   # to say more.
@@ -80,15 +80,15 @@ end
   # [200, {'Content-Type' => 'text/html'}, ["Hello World"]]
 
   # the_body_array is weird. Basically, HTTP supports multi-part
-  # responses and thus a Rack response is sent as an array. The 
-  # first part is consider the main body of the response, it's 
+  # responses and thus a Rack response is sent as an array. The
+  # first part is consider the main body of the response, it's
   # what we care about.
 
 # Let's add this as the return value for our call method real quick.
 
 class App
   def call
-    [200, {'Content-Type' => 'text/html'}, ["Hi from Ruby 006, we &:heart you!"]]
+    [200, {'Content-Type' => 'text/html'}, ["Hi from BK-002, we &<3 you!"]]
   end
 end
 
@@ -106,7 +106,7 @@ end
 
 class App
   def call(env)
-    [200, {'Content-Type' => 'text/html'}, ["Hi from Ruby 006, we &#9829; you!"]]
+    [200, {'Content-Type' => 'text/html'}, ["Hi from BK-002, we &#9829; you!"]]
   end
 end
 
@@ -130,7 +130,7 @@ Rack::Handler::WEBrick.run(our_very_first_web_app, {:Port => 3000})
 # You should see some output that indicates that you've launched your
 # first Ruby web server. Here's what I see.
 
-# $ ruby 001.a.basic.rack.app/app.rb 
+# $ ruby 001.a.basic.rack.app/app.rb
 # [2013-10-18 06:34:13] INFO  WEBrick 1.3.1
 # [2013-10-18 06:34:13] INFO  ruby 1.9.3 (2013-06-27) [x86_64-darwin12.3.0]
 # [2013-10-18 06:34:13] INFO  WEBrick::HTTPServer#start: pid=18621 port=3000
@@ -144,11 +144,11 @@ Rack::Handler::WEBrick.run(our_very_first_web_app, {:Port => 3000})
 
 # http://localhost:3000
 
-# localhost is just an easy way to refer to your own computer from your 
+# localhost is just an easy way to refer to your own computer from your
 # own computer. the :3000 part is basically saying which port to use on your
 # computer. We'll cover more about this.
 
-# You could also open a new terminal (because you have a running process, 
+# You could also open a new terminal (because you have a running process,
 # the web server, in your current one) and type:
 
 # open http://localhost:3000
